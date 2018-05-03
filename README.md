@@ -2,4 +2,4 @@
 # Product Backlog App
 Small testing app to create product backlogs for scrum.
 
-Using Spring framework on the backend and React Js on the front end.
+Using Spring framework on the backend and React Js on the front end. 

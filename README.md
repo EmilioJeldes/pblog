@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/EmilioJeldes/pblog.svg?style=svg)](https://circleci.com/gh/EmilioJeldes/pblog)
+[![CircleCI](https://circleci.com/gh/EmilioJeldes/pblog.svg?style=svg)](https://circleci.com/gh/EmilioJeldes/pblog) [![codecov](https://codecov.io/gh/EmilioJeldes/pblog/branch/master/graph/badge.svg)](https://codecov.io/gh/EmilioJeldes/pblog)
 # Product Backlog App
 Small testing app to create product backlogs for scrum.
 

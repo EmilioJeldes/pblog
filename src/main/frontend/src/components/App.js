@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 const Header = () => <h2>Header</h2>;
@@ -11,13 +11,13 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <div>
+        <Fragment>
           <Header />
           <Route exact path="/" component={Landing} />
           <Route exact path="/tasks" component={Dashboard} />
           <Route exact path="/tasks/new" component={TaskNew} />
           <Footer />
-        </div>
+        </Fragment>
       </BrowserRouter>
     </div>
   );

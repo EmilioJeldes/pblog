@@ -7,8 +7,6 @@ import { headerStyle } from 'assets/jss';
 class Header extends Component {
   render() {
     const { classes } = this.props;
-		console.log(classes);
-		console.log(classes.marginAuto);
 
     return (
       <AppBar position="sticky" className={classes.appBar}>

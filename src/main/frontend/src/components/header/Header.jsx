@@ -7,23 +7,22 @@ import { headerStyle } from 'assets/jss';
 class Header extends Component {
   render() {
     const { classes } = this.props;
-
     return (
-      <AppBar position="sticky" className={classes.appBar}>
-        <Toolbar>
-          <HeadItemContainer>
-            <Typography variant="title" color="inherit">
-              Pblog
-            </Typography>
-          </HeadItemContainer>
-          <HeadItemContainer auto>
-            <Button color="inherit">Tareas</Button>
-          </HeadItemContainer>
-          <HeadItemContainer>
-            <Button color="inherit">Login</Button>
-          </HeadItemContainer>
-        </Toolbar>
-      </AppBar>
+        <AppBar position="sticky" className={classes.appBar}>
+          <Toolbar>
+            <HeadItemContainer>
+              <Typography variant="title" color="inherit">
+                Pblog
+              </Typography>
+            </HeadItemContainer>
+            <HeadItemContainer auto>
+              <Button color="inherit">Tareas</Button>
+            </HeadItemContainer>
+            <HeadItemContainer>
+              <Button color="inherit">Login</Button>
+            </HeadItemContainer>
+          </Toolbar>
+        </AppBar>
     );
   }
 }

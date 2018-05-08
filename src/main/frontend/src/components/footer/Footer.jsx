@@ -1,32 +1,25 @@
 import React, { Component } from 'react';
-import { withStyles } from 'material-ui/styles';
-import { BottomNavigation } from 'material-ui';
+import { connect } from 'react-redux';
+import compose from 'recompose/compose';
+import * as actions from 'redux/actions';
+import { BottomNavigation, withStyles } from 'material-ui';
 import { BottomNavigationAction } from 'material-ui/BottomNavigation';
 
 import { LineWeightIcon, DashboardIcon, ReleaseIcon } from 'components/icons';
 import { footerStyle } from 'assets/jss';
 
 class Footer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      value: 1
-    };
-  }
-
-  handleChange = (event, value) => {
-    this.setState({ value });
+  handleChange = (event, index) => {
+    this.props.setSelectedBoard(index);
   };
 
   render() {
-    const { classes } = this.props;
-    const { value } = this.state;
+    const { classes, selectedBoard } = this.props;
 
     return (
       <BottomNavigation
         className={classes.bottomNavigation}
-        value={value}
+        value={selectedBoard}
         onChange={this.handleChange}
         showLabels
       >
@@ -38,4 +31,8 @@ class Footer extends Component {
   }
 }
 
-export default withStyles(footerStyle)(Footer);
+const mapStateToProps = selectedBoard => {
+  return selectedBoard;
+};
+
+export default compose(withStyles(footerStyle), connect(mapStateToProps, actions))(Footer);

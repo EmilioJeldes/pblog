@@ -1,6 +1,9 @@
-import { DANGER_COLOR, SUCCESS_COLOR, WARNING_COLOR, PRECAUTION_COLOR } from '../styleConstants';
-
-const BORDER_HEIGH = 15;
+import {
+  topDanger,
+  topPrecaution,
+  topSuccess,
+  topWarning
+} from '../styleConstants';
 
 const taskStyles = {
   task: {
@@ -15,20 +18,20 @@ const taskStyles = {
     backgroundColor: '#fcf59b',
     position: 'relative',
     display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center'
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   topDanger: {
-    borderTop: `${BORDER_HEIGH}px solid ${DANGER_COLOR}`
+    ...topDanger
   },
   topSuccess: {
-    borderTop: `${BORDER_HEIGH}px solid ${SUCCESS_COLOR}`
+    ...topSuccess
   },
   topWarning: {
-    borderTop: `${BORDER_HEIGH}px solid ${WARNING_COLOR}`
+    ...topWarning
   },
   topPrecaution: {
-    borderTop: `${BORDER_HEIGH}px solid ${PRECAUTION_COLOR}`
+    ...topPrecaution
   },
   optionsIcon: {
     position: 'absolute',

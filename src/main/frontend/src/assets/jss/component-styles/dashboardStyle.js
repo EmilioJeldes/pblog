@@ -1,4 +1,4 @@
-import { BACKGROUND_COLOR } from '../styleConstants'
+import { BACKGROUND_COLOR } from '../styleConstants';
 
 const dashboardStyle = {
   background: {

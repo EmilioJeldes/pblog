@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import * as actions from 'redux/actions';
@@ -8,7 +8,7 @@ import { BottomNavigationAction } from 'material-ui/BottomNavigation';
 import { LineWeightIcon, DashboardIcon, ReleaseIcon } from 'components/icons';
 import { footerStyle } from 'assets/jss';
 
-class Footer extends Component {
+class Footer extends PureComponent {
   handleChange = (event, index) => {
     this.props.setSelectedBoard(index);
   };

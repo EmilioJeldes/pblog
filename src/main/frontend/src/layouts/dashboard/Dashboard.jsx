@@ -9,6 +9,10 @@ import { TaskBoard, Categories, Releases } from 'views';
 import { dashboardStyle } from 'assets/jss';
 
 class Dashboard extends Component {
+  shouldComponentUpdate(nextProp) {
+    return nextProp.selectedBoard !== this.props.selectedBoard;
+  }
+
   componentDidMount() {
     this.props.fetchTasks();
     this.props.setSelectedBoard();

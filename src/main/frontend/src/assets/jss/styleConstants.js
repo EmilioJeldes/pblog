@@ -2,7 +2,7 @@
 const PRIMARY_COLOR = '#EB5757';
 const SECONDARY_COLOR = '#56CCF2';
 const WARNING_COLOR = '#ff9800';
-const PRECAUTION_COLOR = 'yellow';
+const PRECAUTION_COLOR = '#FFEE58';
 const DANGER_COLOR = '#f44336';
 const SUCCESS_COLOR = '#4caf50';
 const INFO_COLOR = '#00acc1';
@@ -26,6 +26,11 @@ const topPrecaution = {
   borderTop: `${BORDER_HEIGH}px solid ${PRECAUTION_COLOR}`
 };
 
+const iconSize = {
+	height: '25px',
+	width: '25px'
+}
+
 /* Navbar pixles */
 const NAV_SM = 56;
 const NAV_MD = 64;
@@ -48,5 +53,6 @@ export {
   topDanger,
   topPrecaution,
   topSuccess,
-  topWarning
+	topWarning,
+	iconSize
 };

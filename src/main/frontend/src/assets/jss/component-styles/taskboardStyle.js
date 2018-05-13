@@ -12,7 +12,7 @@ const taskboardStyle = theme => ({
     padding: '15px 15px 70px',
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '95%'
+      width: '90%'
     },
     margin: 'auto'
   },

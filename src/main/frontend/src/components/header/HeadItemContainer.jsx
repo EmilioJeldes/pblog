@@ -17,13 +17,12 @@ const styles = {
   }
 };
 
-const HeadItemContainer = (props) => {
+const HeadItemContainer = props => {
   const { classes, children, auto } = props;
   if (auto === true) {
     return <div className={classes.headItemContainerAuto}>{children}</div>;
-  } else {
-    return <div className={classes.headItemContainer}>{children}</div>;
   }
+  return <div className={classes.headItemContainer}>{children}</div>;
 };
 
 export default withStyles(styles)(HeadItemContainer);

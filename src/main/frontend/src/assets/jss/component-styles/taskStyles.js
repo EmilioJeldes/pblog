@@ -2,7 +2,8 @@ import {
   topDanger,
   topPrecaution,
   topSuccess,
-  topWarning
+	topWarning,
+	iconSize
 } from '../styleConstants';
 
 const taskStyles = {
@@ -35,21 +36,26 @@ const taskStyles = {
   },
   optionsIcon: {
     position: 'absolute',
-    top: -5,
-    right: -5,
-    display: 'block'
+    top: '0',
+    right: '0',
+		display: 'block',
+		...iconSize
   },
   durationIcon: {
     position: 'absolute',
-    top: -5,
-    left: -5,
-    display: 'block'
+    top: '0',
+    left: '0',
+		display: 'block',
+		...iconSize
   },
   taskTitle: {
     fontFamily: 'Gochi Hand, cursive',
     padding: '15px 20px',
     textAlign: 'center'
-  }
+	},
+	menuItem: {
+		padding: '5px 10px'
+	}
 };
 
 export default taskStyles;

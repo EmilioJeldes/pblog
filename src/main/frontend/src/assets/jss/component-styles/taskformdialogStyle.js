@@ -1,6 +1,9 @@
 import { topDanger, topPrecaution, topSuccess, topWarning } from '../styleConstants';
 
 const taskformdialogStyle = theme => ({
+  root: {
+    backgroundColor: 'transparent'
+  },
   button: {
     position: 'absolute',
     bottom: theme.spacing.unit * 7,
@@ -19,10 +22,11 @@ const taskformdialogStyle = theme => ({
     }
   },
   taskForm: {
-    margin: 0,
-    color: '#212121',
-    backgroundColor: '#fcf59b',
-    borderTop: '10px solid green'
+    margin: 'auto',
+		color: '#212121',
+		/* FIXME: */
+    // backgroundColor: '#fcf59b',
+    borderTop: '10px solid green',
   },
   input: {
     padding: theme.spacing.unit
@@ -38,10 +42,10 @@ const taskformdialogStyle = theme => ({
   },
   topPrecaution: {
     ...topPrecaution
-	},
-	basis: {
-		flexBasis: 200
-	}
+  },
+  basis: {
+    flexBasis: 200
+  }
 });
 
 export default taskformdialogStyle;

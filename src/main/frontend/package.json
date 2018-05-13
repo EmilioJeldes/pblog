@@ -4,23 +4,26 @@
   "private": true,
   "proxy": {
     "/api/*": {
-      "target": "http://localhost:8080/pblog"
+      "target": "http://localhost:8080"
     }
   },
   "dependencies": {
     "@material-ui/icons": "^1.0.0-beta.43",
     "axios": "^0.18.0",
+    "lodash": "^4.17.10",
     "material-ui": "^1.0.0-beta.44",
+    "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.3.2",
-    "react-height": "^3.0.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "react-swipeable-views": "^0.12.13",
     "recompose": "^0.27.0",
     "redux": "^4.0.0",
+    "redux-form": "^7.3.0",
+    "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
@@ -28,5 +31,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "devDependencies": {}
 }

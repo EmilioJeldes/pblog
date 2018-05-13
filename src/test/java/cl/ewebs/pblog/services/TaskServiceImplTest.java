@@ -14,10 +14,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class TaskServiceImplTest {
 
@@ -108,5 +108,17 @@ public class TaskServiceImplTest {
         List<TaskDTO> taskDTOS = taskService.getAllTasks();
         // then
         assertEquals(3, taskDTOS.size());
+    }
+
+    @Test
+    public void testDeleteTask() {
+        // given
+        Long id = 1L;
+
+        // when
+        taskRepository.deleteById(id);
+
+        // then
+        verify(taskRepository, times(1)).deleteById(anyLong());
     }
 }

@@ -12,4 +12,6 @@ public interface TaskService {
 
     List<TaskDTO> getAllTasks();
 
+    void deleteTask(Long id);
+
 }

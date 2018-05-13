@@ -35,4 +35,11 @@ public class TaskController {
     public TaskDTO createTask(@RequestBody TaskDTO taskDTO) {
         return taskService.saveTask(taskDTO);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
+    }
+
 }

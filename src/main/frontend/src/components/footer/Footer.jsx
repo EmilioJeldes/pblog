@@ -2,8 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import * as actions from 'redux/actions';
-import { BottomNavigation, withStyles } from 'material-ui';
-import { BottomNavigationAction } from 'material-ui/BottomNavigation';
+import { BottomNavigation, withStyles, BottomNavigationAction } from '@material-ui/core';
 
 import { LineWeightIcon, DashboardIcon, ReleaseIcon } from 'components/icons';
 import { footerStyle } from 'assets/jss';

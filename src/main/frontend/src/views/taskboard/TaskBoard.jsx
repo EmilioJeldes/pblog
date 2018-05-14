@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import _ from 'lodash';
-import { Grid, withStyles, Typography } from 'material-ui';
+import { Grid, withStyles, Typography } from '@material-ui/core';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 import { taskboardStyle } from 'assets/jss';
@@ -47,4 +47,7 @@ const mapStateToProps = tasks => {
   return tasks;
 };
 
-export default compose(withStyles(taskboardStyle), connect(mapStateToProps, null))(TaskBoard);
+export default compose(
+  withStyles(taskboardStyle, { withTheme: true }),
+  connect(mapStateToProps, null)
+)(TaskBoard);

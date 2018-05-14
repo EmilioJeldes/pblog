@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
-import { Card, Typography, IconButton, withStyles, Grid } from 'material-ui';
-import Menu, { MenuItem } from 'material-ui/Menu';
+import { Card, Typography, IconButton, withStyles, Grid, Menu, MenuItem } from '@material-ui/core';
 import { MoreVertIcon } from 'components/icons';
 
 import { taskStyles } from 'assets/jss';
@@ -47,12 +46,12 @@ class Task extends PureComponent {
             getContentAnchorEl={null}
             onClose={this.handleClose}
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left'
+              vertical: 'top',
+              horizontal: 'right'
             }}
             transformOrigin={{
               vertical: 'top',
-              horizontal: 'left'
+              horizontal: 'right'
             }}
           >
             {optionsMenu.map(el => (

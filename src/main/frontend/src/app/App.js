@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { CssBaseline } from 'material-ui';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { Header, Footer } from 'components';
 import routes from 'routes';

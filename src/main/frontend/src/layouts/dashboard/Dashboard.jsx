@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 import compose from 'recompose/compose';
 import SwipeableViews from 'react-swipeable-views';
-import { withStyles } from 'material-ui';
+import { withStyles } from '@material-ui/core';
 
 import { TaskBoard, Categories, Releases } from 'views';
 import { dashboardStyle } from 'assets/jss';

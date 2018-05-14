@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { AppBar, Toolbar, Typography, withStyles, Button } from 'material-ui';
+import { AppBar, Toolbar, Typography, withStyles, Button } from '@material-ui/core';
 import HeadItemContainer from './HeadItemContainer';
 
 import { headerStyle } from 'assets/jss';

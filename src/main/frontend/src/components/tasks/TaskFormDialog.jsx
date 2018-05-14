@@ -1,15 +1,22 @@
 import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
-import { withStyles, Button, Dialog, DialogContent, DialogActions } from 'material-ui';
-import MenuItem from 'material-ui/Menu/MenuItem';
+import { connect } from 'react-redux';
 import { Field, reduxForm, reset } from 'redux-form';
 import compose from 'recompose/compose';
-import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+import {
+  withStyles,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogActions,
+  MenuItem,
+  Zoom
+} from '@material-ui/core';
 
 import { taskformdialogStyle } from 'assets/jss';
 import { AddIcon } from 'components/icons';
 import { priorities, validate, renderSelectField, renderTextField } from './constants';
+import * as actions from 'redux/actions';
 
 class TaskFormDialog extends Component {
   state = {

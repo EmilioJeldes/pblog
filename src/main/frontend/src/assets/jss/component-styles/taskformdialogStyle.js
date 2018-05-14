@@ -45,7 +45,10 @@ const taskformdialogStyle = theme => ({
   },
   basis: {
     flexBasis: 200
-  }
+	},
+	divWrapper: {
+		padding: '20px'
+	}
 });
 
 export default taskformdialogStyle;

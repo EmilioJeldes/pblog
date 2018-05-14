@@ -11,9 +11,12 @@ export const setSelectedBoard = index => {
   return { type: SELECTED_BOARD, payload: index };
 };
 
-export const createTask = values => {
-  const request = axios.post(TASK_URL, values);
-  return { type: CREATE_TASK, payload: request };
+// Retuns the entired request so to access it must be action.payload.data
+export const createTask = values => async dispatch => {
+  const res = await axios.post(TASK_URL, values);
+  return res.status === 201
+    ? dispatch({ type: CREATE_TASK, payload: res.data })
+    : dispatch({ type: CREATE_TASK, payload: null });
 };
 
 export const deleteTask = id => async dispatch => {

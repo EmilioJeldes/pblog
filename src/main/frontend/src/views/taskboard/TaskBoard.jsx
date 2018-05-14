@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
+import _ from 'lodash';
 import { Grid, withStyles, Typography } from 'material-ui';
 import { Scrollbars } from 'react-custom-scrollbars';
 
@@ -17,7 +18,13 @@ class TaskBoard extends Component {
       <Typography variant="subheading">Crea tus tareas</Typography>
     ) : (
       tasks.map(t => (
-        <Task key={t.id} id={t.id} title={t.task_name} priority={t.priority} duration={t.duration} />
+        <Task
+          key={t.id}
+          id={t.id}
+          title={t.task_name}
+          priority={t.priority}
+          duration={t.duration}
+        />
       ))
     );
 

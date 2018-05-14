@@ -28,7 +28,7 @@ class Task extends PureComponent {
   };
 
   handleClose = () => {
-		this.setState({ anchorEl: null });
+    this.setState({ anchorEl: null });
   };
 
   render() {

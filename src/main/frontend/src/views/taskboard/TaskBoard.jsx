@@ -17,7 +17,7 @@ class TaskBoard extends Component {
       <Typography variant="subheading">Crea tus tareas</Typography>
     ) : (
       tasks.map(t => (
-        <Task key={t.id} title={t.task_name} priority={t.priority} duration={t.duration} />
+        <Task key={t.id} id={t.id} title={t.task_name} priority={t.priority} duration={t.duration} />
       ))
     );
 

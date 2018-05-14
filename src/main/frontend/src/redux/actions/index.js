@@ -16,7 +16,8 @@ export const createTask = values => {
   return { type: CREATE_TASK, payload: request };
 };
 
-export const deleteTask = id => {
-  const request = axios.delete(`${TASK_URL}/${id}`);
-  return { type: DELETE_TASK, payload: id };
+export const deleteTask = id => async dispatch => {
+  return (await axios.delete(`${TASK_URL}/${id}`)).status === 200
+    ? dispatch({ type: DELETE_TASK, payload: id })
+    : dispatch({ type: DELETE_TASK, payload: null });
 };

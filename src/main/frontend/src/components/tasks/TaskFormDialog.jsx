@@ -25,7 +25,7 @@ class TaskFormDialog extends Component {
   };
 
   onSubmit = values => {
-    this.props.createTask(values).then(() => {
+    this.props.createTask(values, this.props.fe).then(() => {
       this.props.fetchTasks();
     });
   };

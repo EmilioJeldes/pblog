@@ -17,13 +17,13 @@ class TaskBoard extends Component {
     tasks === null ? (
       <Typography variant="subheading">Crea tus tareas</Typography>
     ) : (
-      tasks.map(t => (
+      _.map(tasks, task => (
         <Task
-          key={t.id}
-          id={t.id}
-          title={t.task_name}
-          priority={t.priority}
-          duration={t.duration}
+          key={task.id}
+          id={task.id}
+          title={task.task_name}
+          priority={task.priority}
+          duration={task.duration}
         />
       ))
     );

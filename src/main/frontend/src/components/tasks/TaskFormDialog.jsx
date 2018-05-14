@@ -4,7 +4,7 @@ import { withStyles, Button, Dialog, DialogContent, DialogActions } from 'materi
 import MenuItem from 'material-ui/Menu/MenuItem';
 import { Field, reduxForm, reset } from 'redux-form';
 import compose from 'recompose/compose';
-import { connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 
 import { taskformdialogStyle } from 'assets/jss';
@@ -25,7 +25,7 @@ class TaskFormDialog extends Component {
   };
 
   onSubmit = values => {
-    this.props.createTask(values, this.props.fe).then(() => {
+    this.props.createTask(values).then(() => {
       this.props.fetchTasks();
     });
   };

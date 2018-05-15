@@ -3,7 +3,9 @@ import {
   topPrecaution,
   topSuccess,
 	topWarning,
-	iconSize
+	iconSize,
+	taskDefaultStyle,
+	taskTitleFont
 } from '../styleConstants';
 
 const taskStyles = {
@@ -11,16 +13,12 @@ const taskStyles = {
     margin: 'auto',
     height: 150,
     width: '100%',
-    color: '#212121',
     borderTopLeftRadius: '50px',
     borderTopRightRadius: '50px',
     borderBottomLeftRadius: '20px 1000px',
     borderBottomRightRadius: '700px 30px',
-    backgroundColor: '#fcf59b',
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+		position: 'relative',
+		...taskDefaultStyle
   },
   topDanger: {
     ...topDanger
@@ -49,7 +47,7 @@ const taskStyles = {
 		...iconSize
   },
   taskTitle: {
-    fontFamily: 'Gochi Hand, cursive',
+    ...taskTitleFont,
     padding: '15px 20px',
     textAlign: 'center'
 	},

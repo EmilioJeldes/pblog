@@ -10,6 +10,7 @@ const ROSE_COLOR = '#e91e63';
 const GRAY_COLOR = '#999999';
 const BLACK_COLOR = '#2C2C2C';
 const BACKGROUND_COLOR = '#EFEFEF';
+const TASK_BACKGROUND_COLOR = '#fcf59b';
 
 /* Task Border */
 const BORDER_HEIGH = 15;
@@ -25,11 +26,23 @@ const topWarning = {
 const topPrecaution = {
   borderTop: `${BORDER_HEIGH}px solid ${PRECAUTION_COLOR}`
 };
+const taskDefaultStyle = {
+  backgroundColor: TASK_BACKGROUND_COLOR,
+  color: '#212121',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  textAlign: 'center'
+};
+
+const taskTitleFont = {
+	fontFamily: 'Gochi Hand, cursive'
+}
 
 const iconSize = {
-	height: '25px',
-	width: '25px'
-}
+  height: '25px',
+  width: '25px'
+};
 
 /* Navbar pixles */
 const NAV_SM = 56;
@@ -53,6 +66,9 @@ export {
   topDanger,
   topPrecaution,
   topSuccess,
-	topWarning,
-	iconSize
+  topWarning,
+  iconSize,
+  TASK_BACKGROUND_COLOR,
+	taskDefaultStyle,
+	taskTitleFont
 };

@@ -2,8 +2,9 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import { Card, Typography, IconButton, withStyles, Grid, Menu, MenuItem } from '@material-ui/core';
-import { MoreVertIcon } from 'components/icons';
 
+import { MoreVertIcon } from 'components/icons';
+import { TextArea, OutsideAlerter } from 'components';
 import { taskStyles } from 'assets/jss';
 import { setClassPriority } from './constants';
 import { fetchTasks, deleteTask } from 'redux/actions';
@@ -11,32 +12,71 @@ import { fetchTasks, deleteTask } from 'redux/actions';
 const optionsMenu = [{ name: 'Editar Tarea' }, { name: 'Eliminar tarea' }];
 
 class Task extends PureComponent {
-  state = {
-    anchorEl: null
-  };
+  constructor(props) {
+    super(props);
 
-  handleClick = event => {
+    this.state = {
+      anchorEl: null,
+      isEditable: false,
+      title: this.props.title || ''
+    };
+  }
+
+  openOptions = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
+  closeOptions = () => {
+    this.setState({ anchorEl: null });
+  };
+
   handleDeleteTask = () => {
-    this.handleClose();
+    this.closeOptions();
     this.props.deleteTask(this.props.id).then(() => {
       this.props.fetchTasks();
     });
   };
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
+  toggleEditTask = () => {
+    this.setState({ isEditable: !this.state.isEditable });
+    this.closeOptions();
+	};
+	
+	stopEditingTask = () => {
+		this.setState({ isEditable: false });
+    this.closeOptions();
+	}
+
+  handleSubmitTask = () => {};
+
+  handleRenderEditTask = () => {
+    const { classes } = this.props;
+    const { title, isEditable } = this.state;
+
+    return isEditable ? (
+      <form onSubmit={this.handleSubmitTask}>
+        <TextArea
+          value={title}
+          changeValue={event => {
+            this.setState({ title: event.target.value });
+          }}
+        />
+      </form>
+    ) : (
+      <Typography variant="title" className={classes.taskTitle}>
+        {title}
+      </Typography>
+    );
   };
 
   render() {
-    const { classes, title, priority, duration } = this.props;
+    const { classes, priority, duration } = this.props;
     const { anchorEl } = this.state;
+
     return (
       <Grid item xs={6} sm={4} md={3} lg={2}>
         <Card className={`${classes.task} ${setClassPriority(priority, classes)}`}>
-          <IconButton className={classes.optionsIcon} onClick={this.handleClick}>
+          <IconButton className={classes.optionsIcon} onClick={this.openOptions}>
             <MoreVertIcon />
           </IconButton>
           <Menu
@@ -44,7 +84,7 @@ class Task extends PureComponent {
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             getContentAnchorEl={null}
-            onClose={this.handleClose}
+            onClose={this.closeOptions}
             anchorOrigin={{
               vertical: 'top',
               horizontal: 'right'
@@ -58,7 +98,7 @@ class Task extends PureComponent {
               <MenuItem
                 key={el.name}
                 className={classes.menuItem}
-                onClick={el.name === 'Eliminar tarea' ? this.handleDeleteTask : this.handleClose}
+                onClick={el.name === 'Eliminar tarea' ? this.handleDeleteTask : this.toggleEditTask}
               >
                 {el.name}
               </MenuItem>
@@ -67,9 +107,9 @@ class Task extends PureComponent {
           <IconButton className={classes.durationIcon}>
             <Typography variant="subheading">{`${duration}h`}</Typography>
           </IconButton>
-          <Typography variant="title" className={classes.taskTitle}>
-            {title}
-          </Typography>
+          <OutsideAlerter clickOutside={this.stopEditingTask}>
+            {this.handleRenderEditTask()}
+          </OutsideAlerter>
         </Card>
       </Grid>
     );

@@ -67,7 +67,6 @@ class TaskFormDialog extends Component {
         <Dialog open={this.state.open} onClose={this.handleClose}>
           <div className={classes.divWrapper}>
             <form onSubmit={handleSubmit(this.onSubmit)}>
-              {/* FIXME: white margin over the card task */}
               <DialogContent>
                 {/* TASK NAME */}
                 <Field

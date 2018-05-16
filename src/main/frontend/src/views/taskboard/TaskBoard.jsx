@@ -33,7 +33,7 @@ class TaskBoard extends Component {
     return (
       <div className={classes.root}>
         <Scrollbars>
-          <Grid container justify="space-around" spacing={16} className={classes.grid}>
+          <Grid container justify="center" spacing={16} className={classes.grid}>
             {this.renderTasks(tasks)}
           </Grid>
         </Scrollbars>

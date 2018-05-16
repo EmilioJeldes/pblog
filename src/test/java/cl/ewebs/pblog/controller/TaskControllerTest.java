@@ -2,10 +2,10 @@ package cl.ewebs.pblog.controller;
 
 import cl.ewebs.pblog.api.model.TaskDTO;
 import cl.ewebs.pblog.domain.Priority;
+import cl.ewebs.pblog.exceptions.ResourceNotFoundException;
 import cl.ewebs.pblog.services.TaskService;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -19,6 +19,7 @@ import java.util.List;
 import static cl.ewebs.pblog.controller.AbstractRestControllerTest.asJsonString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -46,7 +47,9 @@ public class TaskControllerTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(taskController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(taskController)
+                .setControllerAdvice(new RestResponseEntityExceptionHandler())
+                .build();
     }
 
     @Test
@@ -99,7 +102,7 @@ public class TaskControllerTest {
         taskDTO.setTaskName(NAME);
 
         // when
-        when(taskService.saveTask(ArgumentMatchers.any(TaskDTO.class))).thenReturn(taskDTO);
+        when(taskService.saveTask(any(TaskDTO.class))).thenReturn(taskDTO);
 
         // then
         mockMvc.perform(post(URL_TASKS)
@@ -118,7 +121,52 @@ public class TaskControllerTest {
         mockMvc.perform(delete(URL_TASKS + "/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-        
+
         verify(taskService).deleteTask(anyLong());
+    }
+
+    @Test
+    public void testUpdateTask() throws Exception {
+        // given
+        TaskDTO taskDTO = new TaskDTO();
+        taskDTO.setDescription(DESCRIPTION);
+        taskDTO.setId(ID);
+        taskDTO.setDuration(DURATION);
+        taskDTO.setPriority(PRIORITY);
+        taskDTO.setState(STATE);
+        taskDTO.setTaskName(NAME);
+
+        TaskDTO returnDTO = new TaskDTO();
+        returnDTO.setDescription(DESCRIPTION);
+        returnDTO.setDuration(DURATION);
+        returnDTO.setId(ID);
+        returnDTO.setPriority(PRIORITY);
+        returnDTO.setState(STATE);
+        returnDTO.setTaskName(NAME);
+
+
+        // when
+        when(taskService.updateTask(anyLong(), any(TaskDTO.class))).thenReturn(returnDTO);
+
+        // then
+        mockMvc.perform(put(URL_TASKS + "/" + ID)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(taskDTO)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.description", equalTo(DESCRIPTION)))
+                .andExpect(jsonPath("$.duration", equalTo(DURATION)))
+                .andExpect(jsonPath("$.id", equalTo(1)))
+                .andExpect(jsonPath("$.state", equalTo(STATE)))
+                .andExpect(jsonPath("$.priority", equalTo("HIGH")));
+    }
+
+    @Test
+    public void testGetTaskNotFound() throws Exception {
+        TaskDTO taskDTO = new TaskDTO();
+        taskDTO.setId(1L);
+
+        when(taskService.findTaskById(anyLong())).thenThrow(ResourceNotFoundException.class);
+
+        mockMvc.perform(get(URL_TASKS + "/1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound());
     }
 }

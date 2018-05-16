@@ -1,6 +1,7 @@
 /* COLORS */
-const PRIMARY_COLOR = '#EB5757';
-const SECONDARY_COLOR = '#56CCF2';
+const PRIMARY_COLOR = '#428bca';
+// const PRIMARY_COLOR = '#56CCF2';
+const SECONDARY_COLOR = '#EB5757';
 const WARNING_COLOR = '#ff9800';
 const PRECAUTION_COLOR = '#FFEE58';
 const DANGER_COLOR = '#f44336';
@@ -8,7 +9,7 @@ const SUCCESS_COLOR = '#4caf50';
 const INFO_COLOR = '#00acc1';
 const ROSE_COLOR = '#e91e63';
 const GRAY_COLOR = '#999999';
-const BLACK_COLOR = '#2C2C2C';
+const BLACK_COLOR = '#383838';
 const BACKGROUND_COLOR = '#EFEFEF';
 const TASK_BACKGROUND_COLOR = '#fcf59b';
 

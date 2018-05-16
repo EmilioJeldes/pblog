@@ -4,6 +4,7 @@ import cl.ewebs.pblog.api.mappers.TaskMapper;
 import cl.ewebs.pblog.api.model.TaskDTO;
 import cl.ewebs.pblog.domain.Priority;
 import cl.ewebs.pblog.domain.Task;
+import cl.ewebs.pblog.exceptions.ResourceNotFoundException;
 import cl.ewebs.pblog.repositories.TaskRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -120,5 +121,47 @@ public class TaskServiceImplTest {
 
         // then
         verify(taskRepository, times(1)).deleteById(anyLong());
+    }
+
+    @Test
+    public void testUpdateTask() {
+        // given
+        TaskDTO taskDTO = new TaskDTO();
+        taskDTO.setDescription(DESCRIPTION);
+        taskDTO.setDuration(DURATION);
+        taskDTO.setPriority(PRIORITY);
+        taskDTO.setState(STATE);
+        taskDTO.setTaskName(NAME);
+
+        Task task = new Task();
+        task.setDescription(DESCRIPTION);
+        task.setDuration(DURATION);
+        task.setId(ID);
+        task.setPriority(PRIORITY);
+        task.setState(STATE);
+        task.setTaskName(NAME);
+
+        when(taskRepository.save(any(Task.class))).thenReturn(task);
+
+        // when
+        TaskDTO savedDTO = taskService.updateTask(ID, taskDTO);
+
+        // then
+        assertEquals(NAME, savedDTO.getTaskName());
+        assertEquals(DURATION, savedDTO.getDuration());
+        assertEquals(ID, savedDTO.getId());
+        assertEquals(DESCRIPTION, savedDTO.getDescription());
+        assertEquals(PRIORITY, savedDTO.getPriority());
+    }
+
+    @Test(expected = ResourceNotFoundException.class)
+    public void testTaskNotFound() {
+        // given
+        Optional<Task> optionalTask = Optional.empty();
+
+        // when
+        when(taskRepository.findById(anyLong())).thenReturn(optionalTask);
+
+        TaskDTO taskById = taskService.findTaskById(1L);
     }
 }

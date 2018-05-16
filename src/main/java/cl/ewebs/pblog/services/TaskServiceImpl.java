@@ -2,6 +2,8 @@ package cl.ewebs.pblog.services;
 
 import cl.ewebs.pblog.api.mappers.TaskMapper;
 import cl.ewebs.pblog.api.model.TaskDTO;
+import cl.ewebs.pblog.domain.Task;
+import cl.ewebs.pblog.exceptions.ResourceNotFoundException;
 import cl.ewebs.pblog.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +27,7 @@ public class TaskServiceImpl implements TaskService {
     public TaskDTO findTaskById(Long id) {
         return taskRepository.findById(id)
                 .map(taskMapper::taskToTaskDTO)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(ResourceNotFoundException::new);
     }
 
     @Override
@@ -44,5 +46,13 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
+    }
+
+    @Override
+    public TaskDTO updateTask(Long id, TaskDTO taskDTO) {
+        Task task = taskMapper.taskDTOToTask(taskDTO);
+        task.setId(id);
+        return taskMapper.taskToTaskDTO(taskRepository.save(task));
+
     }
 }

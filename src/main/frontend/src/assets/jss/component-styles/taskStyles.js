@@ -2,10 +2,10 @@ import {
   topDanger,
   topPrecaution,
   topSuccess,
-	topWarning,
-	iconSize,
-	taskDefaultStyle,
-	taskTitleFont
+  topWarning,
+  iconSize,
+  taskDefaultStyle,
+  taskTitleFont
 } from '../styleConstants';
 
 const taskStyles = {
@@ -17,8 +17,9 @@ const taskStyles = {
     borderTopRightRadius: '50px',
     borderBottomLeftRadius: '20px 1000px',
     borderBottomRightRadius: '700px 30px',
-		position: 'relative',
-		...taskDefaultStyle
+    position: 'relative',
+    ...taskDefaultStyle,
+    flexFlow: 'row wrap'
   },
   topDanger: {
     ...topDanger
@@ -32,28 +33,30 @@ const taskStyles = {
   topPrecaution: {
     ...topPrecaution
   },
-  optionsIcon: {
-    position: 'absolute',
-    top: '0',
-    right: '0',
-		display: 'block',
-		...iconSize
+  cardStatus: {
+    borderTopLeftRadius: '5px',
+    borderTopRightRadius: '5px',
+    height: 20,
+    display: 'flex',
+    alignItems: 'center',
+    flex: '1 100%'
+  },
+  cardContent: {
+    position: 'relative'
   },
   durationIcon: {
     position: 'absolute',
-    top: '0',
-    left: '0',
+    bottom: '5px',
+    right: '5px',
 		display: 'block',
-		...iconSize
+    ...iconSize,
+		padding: '0 10px'
   },
   taskTitle: {
     ...taskTitleFont,
     padding: '15px 20px',
     textAlign: 'center'
-	},
-	menuItem: {
-		padding: '5px 10px'
-	}
+  }
 };
 
 export default taskStyles;

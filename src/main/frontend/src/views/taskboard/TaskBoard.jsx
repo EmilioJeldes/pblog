@@ -23,7 +23,9 @@ class TaskBoard extends Component {
           id={task.id}
           title={task.task_name}
           priority={task.priority}
-          duration={task.duration}
+					duration={task.duration}
+					description={task.description}
+					state={task.state}
         />
       ))
     );

@@ -3,9 +3,13 @@ const PRIMARY_COLOR = '#428bca';
 // const PRIMARY_COLOR = '#56CCF2';
 const SECONDARY_COLOR = '#EB5757';
 const WARNING_COLOR = '#ff9800';
+const WARNING_COLOR_HOVER = '#FF6A00';
 const PRECAUTION_COLOR = '#FFEE58';
+const PRECAUTION_COLOR_HOVER = '#F0E054';
 const DANGER_COLOR = '#f44336';
+const DANGER_COLOR_HOVER = '#E30000';
 const SUCCESS_COLOR = '#4caf50';
+const SUCCESS_COLOR_HOVER = '#3D8F40';
 const INFO_COLOR = '#00acc1';
 const ROSE_COLOR = '#e91e63';
 const GRAY_COLOR = '#999999';
@@ -16,22 +20,22 @@ const TASK_BACKGROUND_COLOR = '#fcf59b';
 /* Task Border */
 const BORDER_HEIGH = 15;
 const topDanger = {
-  borderTop: `${BORDER_HEIGH}px solid ${DANGER_COLOR}`
+  backgroundColor: DANGER_COLOR
 };
 const topSuccess = {
-  borderTop: `${BORDER_HEIGH}px solid ${SUCCESS_COLOR}`
+  backgroundColor: SUCCESS_COLOR
 };
 const topWarning = {
-  borderTop: `${BORDER_HEIGH}px solid ${WARNING_COLOR}`
+  backgroundColor: WARNING_COLOR
 };
 const topPrecaution = {
-  borderTop: `${BORDER_HEIGH}px solid ${PRECAUTION_COLOR}`
+  backgroundColor: PRECAUTION_COLOR
 };
 const taskDefaultStyle = {
   backgroundColor: TASK_BACKGROUND_COLOR,
   color: '#212121',
   display: 'flex',
-  alignItems: 'center',
+  // alignItems: 'center',
   justifyContent: 'center',
   textAlign: 'center'
 };
@@ -41,13 +45,24 @@ const taskTitleFont = {
 }
 
 const iconSize = {
-  height: '25px',
-  width: '25px'
+  height: '18px',
+  width: '18px'
 };
 
 /* Navbar pixles */
 const NAV_SM = 56;
 const NAV_MD = 64;
+
+/**
+|--------------------------------------------------
+| Tooltip Delays
+|--------------------------------------------------
+*/
+
+const tooltipDelay = {
+	enterDelay: 100,
+	leaveDelay: 100
+}
 
 export {
   PRIMARY_COLOR,
@@ -71,5 +86,10 @@ export {
   iconSize,
   TASK_BACKGROUND_COLOR,
 	taskDefaultStyle,
-	taskTitleFont
+	taskTitleFont,
+	SUCCESS_COLOR_HOVER,
+	DANGER_COLOR_HOVER,
+	WARNING_COLOR_HOVER,
+	PRECAUTION_COLOR_HOVER,
+	tooltipDelay
 };

@@ -26,7 +26,7 @@ class TextArea extends PureComponent {
     this.textArea = React.createRef();
   }
 
-	// FIXME: Auto focus without setTimeout hack
+  // FIXME: Auto focus without setTimeout hack
   componentDidMount() {
     setTimeout(() => {
       this.textArea.current.focus();
@@ -36,15 +36,15 @@ class TextArea extends PureComponent {
   render() {
     return (
       <Fragment>
-          <textarea
-            className={this.props.classes.txtarea}
-            ref={this.textArea}
-            cols={this.props.cols}
-            rows={this.props.rows}
-            style={this.propsresize ? null : { resize: 'none' }}
-            value={this.props.value}
-            onChange={this.props.changeValue}
-          />
+        <textarea
+          className={this.props.classes.txtarea}
+          ref={this.textArea}
+          cols={this.props.cols}
+          rows={this.props.rows}
+          style={this.propsresize ? null : { resize: 'none' }}
+          value={this.props.value}
+          onChange={this.props.changeValue}
+        />
       </Fragment>
     );
   }

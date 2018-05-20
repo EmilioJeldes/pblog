@@ -1,53 +1,68 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
-import { Card, Typography, IconButton, withStyles, Grid, Menu, MenuItem } from '@material-ui/core';
+import { Card, Typography, IconButton, withStyles, Grid } from '@material-ui/core';
 
-import { MoreVertIcon } from 'components/icons';
-import { TextArea, OutsideAlerter } from 'components';
+import { TextArea, OutsideAlerter, PriorityMenu, EditTaskMenu } from 'components';
 import { taskStyles } from 'assets/jss';
 import { setClassPriority } from './constants';
-import { fetchTasks, deleteTask } from 'redux/actions';
-
-const optionsMenu = [{ name: 'Editar Tarea' }, { name: 'Eliminar tarea' }];
+import { fetchTasks, deleteTask, updateTask } from 'redux/actions';
 
 class Task extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      anchorEl: null,
       isEditable: false,
-      title: this.props.title || ''
+      title: this.props.title || '',
+      priority: this.props.priority || 'LOW'
     };
   }
 
-  openOptions = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.isEditable === true &&
+      this.state.isEditable === false &&
+      this.state.title !== this.props.title
+    ) {
+      this.handleSubmitTask();
+    }
+  }
 
-  closeOptions = () => {
-    this.setState({ anchorEl: null });
+  setPriority = ({ target: { value } }) => {
+    this.setState({ priority: value });
+    setTimeout(() => {
+      this.handleSubmitTask();
+    }, 50);
   };
 
   handleDeleteTask = () => {
-    this.closeOptions();
     this.props.deleteTask(this.props.id).then(() => {
       this.props.fetchTasks();
     });
   };
 
-  toggleEditTask = () => {
-    this.setState({ isEditable: !this.state.isEditable });
-    this.closeOptions();
-	};
-	
-	stopEditingTask = () => {
-		this.setState({ isEditable: false });
-    this.closeOptions();
-	}
+  editTask = () => {
+    this.setState({ isEditable: true });
+  };
 
-  handleSubmitTask = () => {};
+  stopEditingTask = () => {
+    this.setState({ isEditable: false });
+  };
+
+  handleSubmitTask = () => {
+    const { id, duration, description, state } = this.props;
+    let task = {
+      priority: this.state.priority,
+      duration,
+      description,
+      state,
+      task_name: this.state.title
+    };
+    this.props.updateTask(id, task).then(() => {
+      this.props.fetchTasks();
+    });
+  };
 
   handleRenderEditTask = () => {
     const { classes } = this.props;
@@ -56,6 +71,7 @@ class Task extends PureComponent {
     return isEditable ? (
       <form onSubmit={this.handleSubmitTask}>
         <TextArea
+          handleSubmit={this.handleSubmitTask}
           value={title}
           changeValue={event => {
             this.setState({ title: event.target.value });
@@ -70,50 +86,35 @@ class Task extends PureComponent {
   };
 
   render() {
-    const { classes, priority, duration } = this.props;
-    const { anchorEl } = this.state;
+    const { classes, priority, duration, id } = this.props;
 
     return (
       <Grid item xs={6} sm={4} md={3} lg={2}>
-        <Card className={`${classes.task} ${setClassPriority(priority, classes)}`}>
-          <IconButton className={classes.optionsIcon} onClick={this.openOptions}>
-            <MoreVertIcon />
-          </IconButton>
-          <Menu
-            id="menu"
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            getContentAnchorEl={null}
-            onClose={this.closeOptions}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right'
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right'
-            }}
-          >
-            {optionsMenu.map(el => (
-              <MenuItem
-                key={el.name}
-                className={classes.menuItem}
-                onClick={el.name === 'Eliminar tarea' ? this.handleDeleteTask : this.toggleEditTask}
-              >
-                {el.name}
-              </MenuItem>
-            ))}
-          </Menu>
+        <Card className={`${classes.task}`}>
+          <div className={`${classes.cardStatus} ${setClassPriority(priority, classes)}`}>
+            <PriorityMenu id={id} setPriority={event => this.setPriority(event)} />
+            <EditTaskMenu
+              id={this.props.id}
+              editTask={this.editTask}
+              isEditable={this.state.isEditable}
+            />
+          </div>
+          <div className={classes.cardContent}>
+            <OutsideAlerter clickOutside={this.stopEditingTask}>
+              {this.handleRenderEditTask()}
+            </OutsideAlerter>
+            {/* <button onClick={() => this.handleSubmitTask()}>asd</button> */}
+          </div>
           <IconButton className={classes.durationIcon}>
-            <Typography variant="subheading">{`${duration}h`}</Typography>
+            <Typography style={{ fontSize: '15px' }}>{`${duration}h`}</Typography>
           </IconButton>
-          <OutsideAlerter clickOutside={this.stopEditingTask}>
-            {this.handleRenderEditTask()}
-          </OutsideAlerter>
         </Card>
       </Grid>
     );
   }
 }
 
-export default compose(withStyles(taskStyles), connect(null, { fetchTasks, deleteTask }))(Task);
+export default compose(
+  withStyles(taskStyles),
+  connect(null, { fetchTasks, deleteTask, updateTask })
+)(Task);

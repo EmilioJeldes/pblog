@@ -4,6 +4,8 @@ import taskStyles from './component-styles/taskStyles';
 import dashboardStyle from './component-styles/dashboardStyle';
 import taskboardStyle from './component-styles/taskboardStyle';
 import taskformdialogStyle from './component-styles/taskformdialogStyle';
+import prioritymenuStyle from './component-styles/prioritymenuStyle'
+import edittaskmenuStyle from './component-styles/edittaskmenuStyle'
 
 import theme from './component-styles/theme';
 
@@ -14,5 +16,7 @@ export {
   taskStyles,
   dashboardStyle,
   taskboardStyle,
-  taskformdialogStyle
+	taskformdialogStyle,
+	prioritymenuStyle,
+	edittaskmenuStyle
 };

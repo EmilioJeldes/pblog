@@ -3,12 +3,22 @@ import { FETCH_TASKS, SELECTED_BOARD, CREATE_TASK, DELETE_TASK, UPDATE_TASK } fr
 
 const TASK_URL = '/api/tasks';
 
-export const fetchTasks = () => async dispatch => {
-  dispatch({ type: FETCH_TASKS, payload: (await axios.get(TASK_URL)).data.tasks });
-};
-
+/**
+|--------------------------------------------------
+| Board
+|--------------------------------------------------
+*/
 export const setSelectedBoard = index => {
   return { type: SELECTED_BOARD, payload: index };
+};
+
+/**
+|--------------------------------------------------
+| Tasks
+|--------------------------------------------------
+*/
+export const fetchTasks = () => async dispatch => {
+  dispatch({ type: FETCH_TASKS, payload: (await axios.get(TASK_URL)).data.tasks });
 };
 
 export const createTask = values => async dispatch => {

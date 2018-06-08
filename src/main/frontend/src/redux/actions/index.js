@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FETCH_TASKS, SELECTED_BOARD, CREATE_TASK, DELETE_TASK, UPDATE_TASK } from './types';
 
-const TASK_URL = '/api/tasks';
+const TASK_URL = 'http://spring-tasks.herokuapp.com/api/tasks';
 
 /**
 |--------------------------------------------------

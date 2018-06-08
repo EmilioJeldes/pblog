@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FETCH_TASKS, SELECTED_BOARD, CREATE_TASK, DELETE_TASK, UPDATE_TASK } from './types';
 
-const TASK_URL = 'http://spring-tasks.herokuapp.com/api/tasks';
+const TASK_URL = 'https://spring-tasks.herokuapp.com/api/tasks';
 
 /**
 |--------------------------------------------------
@@ -18,7 +18,9 @@ export const setSelectedBoard = index => {
 |--------------------------------------------------
 */
 export const fetchTasks = () => async dispatch => {
-  dispatch({ type: FETCH_TASKS, payload: (await axios.get(TASK_URL)).data.tasks });
+  dispatch({ type: FETCH_TASKS, payload: (await axios.get(TASK_URL, {
+		headers: {'Access-Control-Allow-Origin': 'http://localhost:3000'}
+	})).data.tasks });
 };
 
 export const createTask = values => async dispatch => {

@@ -21,6 +21,7 @@ public class TaskController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin
     public TaskListDTO getAllTasks() {
         return new TaskListDTO(taskService.getAllTasks());
     }
@@ -34,6 +35,7 @@ public class TaskController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @CrossOrigin
     public TaskDTO createTask(@RequestBody TaskDTO taskDTO) {
         return taskService.saveTask(taskDTO);
     }

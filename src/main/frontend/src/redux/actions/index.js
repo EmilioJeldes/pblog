@@ -18,9 +18,7 @@ export const setSelectedBoard = index => {
 |--------------------------------------------------
 */
 export const fetchTasks = () => async dispatch => {
-  dispatch({ type: FETCH_TASKS, payload: (await axios.get(TASK_URL, {
-		headers: {'Access-Control-Allow-Origin': 'http://localhost:3000'}
-	})).data.tasks });
+  dispatch({ type: FETCH_TASKS, payload: (await axios.get(TASK_URL)).data.tasks });
 };
 
 export const createTask = values => async dispatch => {

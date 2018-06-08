@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/tasks")
+@CrossOrigin
 public class TaskController {
 
     private final TaskService taskService;
@@ -25,6 +26,7 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public TaskDTO getTaskById(@PathVariable Long id) {
         return taskService.findTaskById(id);
@@ -37,12 +39,14 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public TaskDTO updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
         return taskService.updateTask(id, taskDTO);
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public void deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);

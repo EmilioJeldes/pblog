@@ -20,8 +20,8 @@ public class TaskController {
 	}
 
 	@GetMapping
-	@ResponseStatus(HttpStatus.OK)
 	@CrossOrigin
+	@ResponseStatus(HttpStatus.OK)
 	public TaskListDTO getAllTasks() {
 		return new TaskListDTO(taskService.getAllTasks());
 	}

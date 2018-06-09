@@ -167,6 +167,8 @@ public class TaskControllerTest {
 
         when(taskService.findTaskById(anyLong())).thenThrow(ResourceNotFoundException.class);
 
-        mockMvc.perform(get(URL_TASKS + "/1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound());
+        mockMvc.perform(get(URL_TASKS + "/1")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
     }
 }

@@ -20,14 +20,12 @@ public class TaskController {
 	}
 
 	@GetMapping
-	@CrossOrigin
 	@ResponseStatus(HttpStatus.OK)
 	public TaskListDTO getAllTasks() {
 		return new TaskListDTO(taskService.getAllTasks());
 	}
 
 	@GetMapping("/{id}")
-	@CrossOrigin
 	@ResponseStatus(HttpStatus.OK)
 	public TaskDTO getTaskById(@PathVariable Long id) {
 		return taskService.findTaskById(id);
@@ -35,20 +33,17 @@ public class TaskController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	@CrossOrigin
 	public TaskDTO createTask(@RequestBody TaskDTO taskDTO) {
 		return taskService.saveTask(taskDTO);
 	}
 
 	@PutMapping("/{id}")
-	@CrossOrigin
 	@ResponseStatus(HttpStatus.OK)
 	public TaskDTO updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
 		return taskService.updateTask(id, taskDTO);
 	}
 
 	@DeleteMapping("/{id}")
-	@CrossOrigin
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteTask(@PathVariable Long id) {
 		taskService.deleteTask(id);

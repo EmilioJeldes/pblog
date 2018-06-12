@@ -5,12 +5,12 @@ import cl.ewebs.pblog.domain.Task;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TaskMapper {
 
     TaskMapper INSTANCE = Mappers.getMapper(TaskMapper.class);
 
-    Task taskDTOToTask(TaskDTO taskDTO);
+    Task dtoToDomain(TaskDTO taskDTO);
 
-    TaskDTO taskToTaskDTO(Task task);
+    TaskDTO domainToDTO(Task task);
 }

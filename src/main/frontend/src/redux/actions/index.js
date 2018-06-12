@@ -1,7 +1,17 @@
 import axios from 'axios';
-import { FETCH_TASKS, SELECTED_BOARD, CREATE_TASK, DELETE_TASK, UPDATE_TASK } from './types';
+import { FETCH_TASKS, SELECTED_BOARD, CREATE_TASK, DELETE_TASK, UPDATE_TASK, LOGIN } from './types';
 
 const TASK_URL = 'https://spring-tasks.herokuapp.com/api/tasks';
+
+/**
+|--------------------------------------------------
+| Login
+|--------------------------------------------------
+*/
+
+export const setLoginState = state => {
+  return { type: LOGIN, payload: state };
+};
 
 /**
 |--------------------------------------------------

@@ -5,8 +5,6 @@ import cl.ewebs.pblog.domain.Priority;
 import cl.ewebs.pblog.domain.Task;
 import org.junit.Test;
 
-import javax.print.attribute.standard.MediaSize;
-
 import static org.junit.Assert.*;
 
 public class TaskMapperTest {
@@ -31,7 +29,7 @@ public class TaskMapperTest {
         taskDTO.setTaskName(NAME);
 
         // when
-        Task task = taskMapper.taskDTOToTask(taskDTO);
+        Task task = taskMapper.dtoToDomain(taskDTO);
 
         // then
         assertEquals(taskDTO.getTaskName(), task.getTaskName());
@@ -54,7 +52,7 @@ public class TaskMapperTest {
         task.setTaskName(NAME);
 
         // when
-        TaskDTO taskDTO = taskMapper.taskToTaskDTO(task);
+        TaskDTO taskDTO = taskMapper.domainToDTO(task);
 
         // then
         assertEquals(taskDTO.getPriority(), task.getPriority());

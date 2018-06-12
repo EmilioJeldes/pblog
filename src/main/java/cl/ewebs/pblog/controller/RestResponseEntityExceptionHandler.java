@@ -1,6 +1,7 @@
 package cl.ewebs.pblog.controller;
 
 import cl.ewebs.pblog.api.model.ApiError;
+import cl.ewebs.pblog.exceptions.ResourceNotAllowedException;
 import cl.ewebs.pblog.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,18 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ExceptionHandler({ResourceNotFoundException.class})
     public ResponseEntity<Object> handleNotFoundException(Exception e, WebRequest request) {
 
-        return new ResponseEntity<Object>(new ApiError(HttpStatus.NOT_FOUND, e.getLocalizedMessage(), "Resource not found"), new HttpHeaders(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<Object>(
+                new ApiError(HttpStatus.NOT_FOUND, e.getLocalizedMessage(), "Resource not found"),
+                new HttpHeaders(), HttpStatus.NOT_FOUND
+        );
+    }
+
+    @ExceptionHandler({ResourceNotAllowedException.class})
+    public ResponseEntity<Object> handleNotAllowedException(Exception e, WebRequest request) {
+        return new ResponseEntity<Object>(
+                new ApiError(HttpStatus.UNAUTHORIZED, e.getLocalizedMessage(), "Not allowed resource"),
+                new HttpHeaders(), HttpStatus.UNAUTHORIZED
+        );
     }
 
     @Override
@@ -51,7 +63,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ExceptionHandler({ConstraintViolationException.class})
     public ResponseEntity<Object> handleConstraintViolation(
             ConstraintViolationException ex, WebRequest request) {
-        List<String> errors = new ArrayList<String>();
+        List<String> errors = new ArrayList<>();
         for (ConstraintViolation<?> violation : ex.getConstraintViolations()) {
             errors.add(violation.getRootBeanClass().getName() + " " +
                     violation.getPropertyPath() + ": " + violation.getMessage());
@@ -78,11 +90,11 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
-    @ExceptionHandler({ Exception.class })
+    @ExceptionHandler({Exception.class})
     public ResponseEntity<Object> handleAll(Exception ex, WebRequest request) {
         ApiError apiError = new ApiError(
                 HttpStatus.INTERNAL_SERVER_ERROR, ex.getLocalizedMessage(), "error occurred");
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
 }

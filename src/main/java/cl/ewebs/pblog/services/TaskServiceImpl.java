@@ -26,20 +26,20 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public TaskDTO findTaskById(Long id) {
         return taskRepository.findById(id)
-                .map(taskMapper::taskToTaskDTO)
+                .map(taskMapper::domainToDTO)
                 .orElseThrow(ResourceNotFoundException::new);
     }
 
     @Override
     public TaskDTO saveTask(TaskDTO taskDTO) {
-        return taskMapper.taskToTaskDTO(
-                taskRepository.save(taskMapper.taskDTOToTask(taskDTO)));
+        return taskMapper.domainToDTO(
+                taskRepository.save(taskMapper.dtoToDomain(taskDTO)));
     }
 
     @Override
     public List<TaskDTO> getAllTasks() {
         return taskRepository.findAll().stream()
-                .map(taskMapper::taskToTaskDTO)
+                .map(taskMapper::domainToDTO)
                 .collect(Collectors.toList());
     }
 
@@ -50,9 +50,9 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public TaskDTO updateTask(Long id, TaskDTO taskDTO) {
-        Task task = taskMapper.taskDTOToTask(taskDTO);
+        Task task = taskMapper.dtoToDomain(taskDTO);
         task.setId(id);
-        return taskMapper.taskToTaskDTO(taskRepository.save(task));
+        return taskMapper.domainToDTO(taskRepository.save(task));
 
     }
 }

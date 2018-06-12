@@ -1,19 +1,15 @@
 import Dashboard from 'layouts/dashboard/Dashboard';
-import Landing from 'layouts/dashboard/Dashboard';
+import Landing from 'layouts/landing/Landing';
 
 const routes = [
   {
-    path: '/tasks',
-    component: Dashboard
-  },
-  {
-    path: '/landing',
+    exact: true,
+    path: '/',
     component: Landing
   },
   {
-    redirect: true,
-    path: '/',
-    to: '/tasks'
+    path: '/tasks',
+    component: Dashboard
   }
 ];
 

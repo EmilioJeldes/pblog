@@ -69,13 +69,7 @@ public class TaskControllerTest {
     @Test
     public void testGetTaskById() throws Exception {
         // given
-        TaskDTO taskDTO = new TaskDTO();
-        taskDTO.setDescription(DESCRIPTION);
-        taskDTO.setDuration(DURATION);
-        taskDTO.setId(ID);
-        taskDTO.setPriority(PRIORITY);
-        taskDTO.setState(STATE);
-        taskDTO.setTaskName(NAME);
+        TaskDTO taskDTO = getTaskDTO();
 
         when(taskService.findTaskById(anyLong())).thenReturn(taskDTO);
 
@@ -90,9 +84,7 @@ public class TaskControllerTest {
                 .andExpect(jsonPath("$.priority", equalTo("HIGH")));
     }
 
-    @Test
-    public void testCreateTask() throws Exception {
-        // given
+    private TaskDTO getTaskDTO() {
         TaskDTO taskDTO = new TaskDTO();
         taskDTO.setDescription(DESCRIPTION);
         taskDTO.setDuration(DURATION);
@@ -100,6 +92,13 @@ public class TaskControllerTest {
         taskDTO.setPriority(PRIORITY);
         taskDTO.setState(STATE);
         taskDTO.setTaskName(NAME);
+        return taskDTO;
+    }
+
+    @Test
+    public void testCreateTask() throws Exception {
+        // given
+        TaskDTO taskDTO = getTaskDTO();
 
         // when
         when(taskService.saveTask(any(TaskDTO.class))).thenReturn(taskDTO);
@@ -136,13 +135,7 @@ public class TaskControllerTest {
         taskDTO.setState(STATE);
         taskDTO.setTaskName(NAME);
 
-        TaskDTO returnDTO = new TaskDTO();
-        returnDTO.setDescription(DESCRIPTION);
-        returnDTO.setDuration(DURATION);
-        returnDTO.setId(ID);
-        returnDTO.setPriority(PRIORITY);
-        returnDTO.setState(STATE);
-        returnDTO.setTaskName(NAME);
+        TaskDTO returnDTO = getTaskDTO();
 
 
         // when

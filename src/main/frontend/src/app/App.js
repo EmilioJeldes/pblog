@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { CssBaseline} from '@material-ui/core';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { CssBaseline } from '@material-ui/core';
 
 import { Header, Footer } from 'components';
 import routes from 'routes';
@@ -14,14 +14,7 @@ class App extends Component {
             <CssBaseline />
             <Header />
             <Switch>
-              {routes.map(
-                (prop, index) =>
-                  prop.redirect ? (
-                    <Redirect from={prop.path} to={prop.to} key={index} />
-                  ) : (
-                    <Route path={prop.path} component={prop.component} key={index} />
-                  )
-              )}
+              {routes.map((route, index) => <Route key={index} {...route} />)}
             </Switch>
             <Footer />
           </Fragment>

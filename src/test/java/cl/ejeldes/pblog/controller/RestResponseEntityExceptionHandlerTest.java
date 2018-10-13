@@ -83,13 +83,13 @@ public class RestResponseEntityExceptionHandlerTest {
                 .andExpect(jsonPath("$.errors", hasSize(1)));
     }
 
-    @Test
-    public void handleNotAllowedException() throws Exception {
-        when(userService.findUserById(anyString(), any())).thenThrow(ResourceNotAllowedException.class);
-
-        mockMvc.perform(get(URL_USERS + "/12304924")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isUnauthorized())
-                .andExpect(jsonPath("$.errors", hasSize(1)));
-    }
+//    @Test
+//    public void handleNotAllowedException() throws Exception {
+//        when(userService.findUserById(anyString(), any())).thenThrow(ResourceNotAllowedException.class);
+//
+//        mockMvc.perform(get(URL_USERS + "/12304924")
+//                .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isUnauthorized())
+//                .andExpect(jsonPath("$.errors", hasSize(1)));
+//    }
 }

@@ -1,5 +1,7 @@
 import React from 'react';
-import { IconButton, Tooltip, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import { EditIcon, CloseIcon } from 'components/icons';
 import { edittaskmenuStyle } from 'assets/jss';

@@ -116,5 +116,8 @@ class Task extends PureComponent {
 
 export default compose(
   withStyles(taskStyles),
-  connect(null, { fetchTasks, deleteTask, updateTask })
+  connect(
+    null,
+    { fetchTasks, deleteTask, updateTask }
+  )
 )(Task);

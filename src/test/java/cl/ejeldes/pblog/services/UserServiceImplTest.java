@@ -1,9 +1,9 @@
-package cl.ewebs.pblog.services;
+package cl.ejeldes.pblog.services;
 
-import cl.ewebs.pblog.api.mappers.UserMapper;
-import cl.ewebs.pblog.api.model.UserDTO;
-import cl.ewebs.pblog.domain.User;
-import cl.ewebs.pblog.repositories.UserRepository;
+import cl.ejeldes.pblog.api.mappers.UserMapper;
+import cl.ejeldes.pblog.api.model.UserDTO;
+import cl.ejeldes.pblog.domain.User;
+import cl.ejeldes.pblog.repositories.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

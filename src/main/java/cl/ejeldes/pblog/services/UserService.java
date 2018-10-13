@@ -1,6 +1,6 @@
-package cl.ewebs.pblog.services;
+package cl.ejeldes.pblog.services;
 
-import cl.ewebs.pblog.api.model.UserDTO;
+import cl.ejeldes.pblog.api.model.UserDTO;
 
 import java.security.Principal;
 

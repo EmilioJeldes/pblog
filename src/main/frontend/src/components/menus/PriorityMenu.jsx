@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { withStyles, IconButton, Menu, MenuItem, Tooltip } from '@material-ui/core';
 
-import { ArrowDropDownIcon } from 'components/icons';
-import { prioritymenuStyle } from 'assets/jss';
-import { tooltipDelay } from 'assets/jss/styleConstants';
+import { ArrowDropDownIcon } from '../../components/icons';
+import { prioritymenuStyle } from '../../assets/jss';
+import { tooltipDelay } from '../../assets/jss/styleConstants';
 
 class PriorityMenu extends Component {
   state = {

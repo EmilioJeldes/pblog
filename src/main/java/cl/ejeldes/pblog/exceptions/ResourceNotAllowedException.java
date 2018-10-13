@@ -1,4 +1,4 @@
-package cl.ewebs.pblog.exceptions;
+package cl.ejeldes.pblog.exceptions;
 
 public class ResourceNotAllowedException extends RuntimeException {
     public ResourceNotAllowedException() {

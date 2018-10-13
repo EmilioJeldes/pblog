@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 
-import { taskDefaultStyle, taskTitleFont } from 'assets/jss/styleConstants';
+import { taskDefaultStyle, taskTitleFont } from '../../assets/jss/styleConstants';
 
 const textAreaStyles = {
   txtarea: {

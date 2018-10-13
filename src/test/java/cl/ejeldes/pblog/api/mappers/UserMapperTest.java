@@ -1,7 +1,7 @@
-package cl.ewebs.pblog.api.mappers;
+package cl.ejeldes.pblog.api.mappers;
 
-import cl.ewebs.pblog.api.model.UserDTO;
-import cl.ewebs.pblog.domain.User;
+import cl.ejeldes.pblog.api.model.UserDTO;
+import cl.ejeldes.pblog.domain.User;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

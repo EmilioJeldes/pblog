@@ -1,7 +1,7 @@
-package cl.ewebs.pblog.controller;
+package cl.ejeldes.pblog.controller;
 
-import cl.ewebs.pblog.api.model.UserDTO;
-import cl.ewebs.pblog.services.UserService;
+import cl.ejeldes.pblog.api.model.UserDTO;
+import cl.ejeldes.pblog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

@@ -1,9 +1,9 @@
-package cl.ewebs.pblog.controller;
+package cl.ejeldes.pblog.controller;
 
-import cl.ewebs.pblog.exceptions.ResourceNotAllowedException;
-import cl.ewebs.pblog.exceptions.ResourceNotFoundException;
-import cl.ewebs.pblog.services.TaskService;
-import cl.ewebs.pblog.services.UserService;
+import cl.ejeldes.pblog.exceptions.ResourceNotAllowedException;
+import cl.ejeldes.pblog.services.UserService;
+import cl.ejeldes.pblog.exceptions.ResourceNotFoundException;
+import cl.ejeldes.pblog.services.TaskService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

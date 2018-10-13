@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import { Card, Typography, IconButton, withStyles, Grid } from '@material-ui/core';
 
-import { TextArea, OutsideAlerter, PriorityMenu, EditTaskMenu } from 'components';
-import { taskStyles } from 'assets/jss';
+import { TextArea, OutsideAlerter, PriorityMenu, EditTaskMenu } from '../../components';
+import { taskStyles } from '../../assets/jss';
 import { setClassPriority } from './constants';
-import { fetchTasks, deleteTask, updateTask } from 'redux/actions';
+import { fetchTasks, deleteTask, updateTask } from '../../redux/actions';
 
 class Task extends PureComponent {
   constructor(props) {

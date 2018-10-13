@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+import * as actions from '../../redux/actions';
 import compose from 'recompose/compose';
 import SwipeableViews from 'react-swipeable-views';
 import { withStyles } from '@material-ui/core';
 
-import { TaskBoard, Categories, Releases } from 'views';
-import { dashboardStyle } from 'assets/jss';
+import { TaskBoard, Categories, Releases } from '../../views';
+import { dashboardStyle } from '../../assets/jss';
 
 class Dashboard extends Component {
   shouldComponentUpdate(nextProp) {

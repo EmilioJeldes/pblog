@@ -1,7 +1,7 @@
-package cl.ewebs.pblog.controller;
+package cl.ejeldes.pblog.controller;
 
-import cl.ewebs.pblog.api.model.UserDTO;
-import cl.ewebs.pblog.services.UserService;
+import cl.ejeldes.pblog.api.model.UserDTO;
+import cl.ejeldes.pblog.services.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.security.Principal;
 
-import static cl.ewebs.pblog.controller.AbstractRestControllerTest.asJsonString;
+import static cl.ejeldes.pblog.controller.AbstractRestControllerTest.asJsonString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;

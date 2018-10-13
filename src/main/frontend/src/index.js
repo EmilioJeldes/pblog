@@ -6,11 +6,11 @@ import reduxThunk from 'redux-thunk';
 import promiseMiddleware from 'redux-promise';
 import { MuiThemeProvider } from '@material-ui/core/';
 
-import 'assets/css/App.css';
+import './assets/css/App.css';
 
-import App from 'app/App';
-import reducers from 'redux/reducers';
-import { theme } from 'assets/jss';
+import App from './app/App';
+import reducers from './redux/reducers';
+import { theme } from './assets/jss';
 
 const store = createStore(reducers, {}, applyMiddleware(promiseMiddleware, reduxThunk));
 

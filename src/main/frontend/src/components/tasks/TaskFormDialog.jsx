@@ -13,10 +13,10 @@ import {
   Zoom
 } from '@material-ui/core';
 
-import { taskformdialogStyle } from 'assets/jss';
-import { AddIcon } from 'components/icons';
+import { taskformdialogStyle } from '../../assets/jss';
+import { AddIcon } from '../../components/icons';
 import { priorities, validate, renderSelectField, renderTextField } from './constants';
-import * as actions from 'redux/actions';
+import * as actions from '../../redux/actions';
 
 class TaskFormDialog extends Component {
   state = {

@@ -1,4 +1,4 @@
-import { LOGIN } from 'redux/actions/types';
+import { LOGIN } from '../../redux/actions/types';
 
 export default (state = false, action) => {
   switch (action.type) {

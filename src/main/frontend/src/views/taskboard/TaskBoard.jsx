@@ -5,8 +5,8 @@ import _ from 'lodash';
 import { Grid, withStyles, Typography } from '@material-ui/core';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-import { taskboardStyle } from 'assets/jss';
-import { Task, TaskFormDialog } from 'components';
+import { taskboardStyle } from '../../assets/jss';
+import { Task, TaskFormDialog } from '../../components';
 
 class TaskBoard extends Component {
   shouldComponentUpdate(nextProps) {

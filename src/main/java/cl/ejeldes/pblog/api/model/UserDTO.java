@@ -1,4 +1,4 @@
-package cl.ewebs.pblog.api.model;
+package cl.ejeldes.pblog.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

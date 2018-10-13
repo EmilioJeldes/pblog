@@ -1,4 +1,4 @@
-package cl.ewebs.pblog.domain;
+package cl.ejeldes.pblog.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

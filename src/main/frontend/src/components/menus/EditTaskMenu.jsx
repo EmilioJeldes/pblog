@@ -3,9 +3,9 @@ import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import { EditIcon, CloseIcon } from 'components/icons';
-import { edittaskmenuStyle } from 'assets/jss';
-import { tooltipDelay } from 'assets/jss/styleConstants';
+import { EditIcon, CloseIcon } from '../../components/icons';
+import { edittaskmenuStyle } from '../../assets/jss';
+import { tooltipDelay } from '../../assets/jss/styleConstants';
 
 const EditTaskMenu = props => {
   const { id, classes, isEditable } = props;
